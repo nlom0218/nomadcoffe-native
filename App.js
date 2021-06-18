@@ -6,7 +6,8 @@ import { Ionicons } from '@expo/vector-icons';
 import * as Font from 'expo-font';
 import { Asset } from 'expo-asset';
 import styled from 'styled-components';
-
+import { NavigationContainer } from '@react-navigation/native';
+import TabsNavigator from './navigators/TabsNavigator';
 
 const Logo = styled.Image`
   max-width: 100%;
@@ -34,19 +35,8 @@ export default function App() {
   }
 
   return (
-    <View style={styles.container}>
-      <Logo source={require("./assets/nomadcoffee-logo.png")} resizeMode="contain" />
-      <Text>WelCome NomadCoffee</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <TabsNavigator />
+    </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
