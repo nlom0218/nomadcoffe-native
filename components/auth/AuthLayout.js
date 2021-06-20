@@ -1,5 +1,5 @@
 import React from 'react';
-import { TouchableWithoutFeedback, KeyboardAvoidingView } from 'react-native';
+import { TouchableWithoutFeedback, KeyboardAvoidingView, Keyboard } from 'react-native';
 import styled from 'styled-components/native';
 
 const Container = styled.View`
@@ -7,11 +7,13 @@ const Container = styled.View`
   justify-content: center;
   align-items: center;
   padding: 0px 40px;
+  background-color: #fcfaf4;
 `
 
 const Logo = styled.Image`
   width: 100%;
   height: 160px;
+  margin-bottom: 20px;
 `
 
 const AuthLayout = ({ children }) => {

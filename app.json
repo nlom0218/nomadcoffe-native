@@ -1,5 +1,6 @@
 {
   "expo": {
+    "userInterfaceStyle": "automatic",
     "name": "nomadcoffee-native",
     "slug": "nomadcoffee-native",
     "version": "1.0.0",
