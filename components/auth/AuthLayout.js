@@ -7,7 +7,7 @@ const Container = styled.View`
   justify-content: center;
   align-items: center;
   padding: 0px 40px;
-  background-color: #fcfaf4;
+  background-color: white
 `
 
 const Logo = styled.Image`

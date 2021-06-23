@@ -7,8 +7,9 @@ import { NavigationContainer } from '@react-navigation/native';
 import TabsNavigator from './navigators/TabsNavigator';
 import { AppearanceProvider } from 'react-native-appearance';
 import { ApolloProvider } from '@apollo/client';
-import { client, isLogginVar, tokenVar } from "./apollo"
+import { client, isLogginVar, tokenVar, cache } from "./apollo"
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { AsyncStorageWrapper, persistCache } from 'apollo3-cache-persist';
 
 export default function App() {
   const [loading, setLoading] = useState(true)
@@ -26,6 +27,10 @@ export default function App() {
       isLogginVar(true)
       tokenVar(token)
     }
+    await persistCache({
+      cache,
+      storage: new AsyncStorageWrapper(AsyncStorage)
+    })
     return preloadAssets()
   }
   if (loading) {
