@@ -8,12 +8,14 @@ import LoggedOutNav from './LoggedOutNav';
 import Me from '../screens/Me';
 import StackNavFactory from './SharedStackNav';
 import TabIcon from '../components/nav/TabIcon';
-import { ActivityIndicator } from 'react-native';
+import { ActivityIndicator, Image } from 'react-native';
+import useMe from '../hooks/useMe';
 
 const Tabs = createBottomTabNavigator()
 
 const TabsNavigator = () => {
   const isLoggin = useReactiveVar(isLogginVar)
+  const { data } = useMe()
   return (<Tabs.Navigator
     tabBarOptions={{
       showLabel: false,
@@ -35,7 +37,11 @@ const TabsNavigator = () => {
     >{() => <StackNavFactory screenName="Search" />}</Tabs.Screen>
     <Tabs.Screen name="Me"
       options={{
-        tabBarIcon: ({ focused, color, size }) => <TabIcon iconName="person" color="black" focused={focused} />
+        tabBarIcon: ({ focused, color, size }) => (
+          data?.me?.avatarURL ? <Image source={{ uri: data.me.avatarURL }}
+            style={{ height: 30, width: 30, borderRadius: 15, ...(focused && { borderColor: "black", borderWidth: 1 }) }}
+          /> : <TabIcon iconName="person" color="black" focused={focused} />
+        )
       }}
     >
       {() => {

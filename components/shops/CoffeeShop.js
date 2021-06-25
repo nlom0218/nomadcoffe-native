@@ -59,7 +59,6 @@ const Caption = styled.Text`
 const CoffeeShop = ({ shop }) => {
   const { width, height } = useWindowDimensions()
   const navigation = useNavigation()
-  console.log(shop.categories);
   return (<Contanier>
     <Header onPress={() => navigation.navigate("Profile")}>
       <UserAvatar source={{ uri: shop.user.avatarURL }}

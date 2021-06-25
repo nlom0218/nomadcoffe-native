@@ -3,6 +3,7 @@ import { Text, View } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import styled from 'styled-components/native';
 import { userLogOut } from '../apollo';
+import useMe from '../hooks/useMe';
 
 const Container = styled.View`
   flex: 1;
@@ -11,6 +12,7 @@ const Container = styled.View`
 `
 
 const Me = () => {
+  const { data: { me } } = useMe()
   return (
     <Container>
       <TouchableOpacity onPress={userLogOut}>
