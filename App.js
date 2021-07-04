@@ -10,6 +10,7 @@ import { ApolloProvider } from '@apollo/client';
 import { client, isLogginVar, tokenVar, cache } from "./apollo"
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { AsyncStorageWrapper, persistCache } from 'apollo3-cache-persist';
+import LoggedInNav from './navigators/LoggedInNav';
 
 export default function App() {
   const [loading, setLoading] = useState(true)
@@ -45,7 +46,7 @@ export default function App() {
     <ApolloProvider client={client}>
       <AppearanceProvider>
         <NavigationContainer>
-          <TabsNavigator />
+          <LoggedInNav />
         </NavigationContainer>
       </AppearanceProvider>
     </ApolloProvider>

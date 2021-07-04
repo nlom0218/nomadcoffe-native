@@ -12,7 +12,6 @@ const Container = styled.View`
 `
 
 const Me = () => {
-  const { data: { me } } = useMe()
   return (
     <Container>
       <TouchableOpacity onPress={userLogOut}>

@@ -39,7 +39,7 @@ const Input = styled.TextInput`
 `
 
 const Search = ({ navigation }) => {
-  const numColumns = 5
+  const numColumns = 4
   const { width } = useWindowDimensions()
   const { register, setValue, watch, handleSubmit } = useForm()
   const [startQueryFn, { loading, data, called }] = useLazyQuery(SEARCH_CATEGORY_NATIVE)

@@ -1,15 +1,13 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import Home from '../screens/Home';
-import Search from '../screens/Search';
 import { useReactiveVar } from '@apollo/client';
 import { isLogginVar } from '../apollo';
 import LoggedOutNav from './LoggedOutNav';
-import Me from '../screens/Me';
 import StackNavFactory from './SharedStackNav';
 import TabIcon from '../components/nav/TabIcon';
-import { ActivityIndicator, Image } from 'react-native';
+import { Image } from 'react-native';
 import useMe from '../hooks/useMe';
+import Camera from '../screens/Camera';
 
 const Tabs = createBottomTabNavigator()
 
@@ -26,15 +24,23 @@ const TabsNavigator = () => {
     }}
   >
     <Tabs.Screen name="Home"
-      options={{
-        tabBarIcon: ({ focused, color, size }) => <TabIcon iconName="home" color="black" focused={focused} />
-      }}
+      options={{ tabBarIcon: ({ focused, color, size }) => <TabIcon iconName="home" color="black" focused={focused} /> }}
     >{() => <StackNavFactory screenName="Home" />}</Tabs.Screen>
     <Tabs.Screen name="Search"
-      options={{
-        tabBarIcon: ({ focused, color, size }) => <TabIcon iconName="search" color="black" focused={focused} />
-      }}
+      options={{ tabBarIcon: ({ focused, color, size }) => <TabIcon iconName="search" color="black" focused={focused} /> }}
     >{() => <StackNavFactory screenName="Search" />}</Tabs.Screen>
+    <Tabs.Screen name="Camera"
+      component={Camera}
+      listeners={({ navigation }) => {
+        return {
+          tabPress: (e) => {
+            e.preventDefault()
+            navigation.navigate("Upload")
+          }
+        }
+      }}
+      options={{ tabBarIcon: ({ focused, color, size }) => <TabIcon iconName="camera" color="black" focused={focused} /> }}
+    />
     <Tabs.Screen name="Me"
       options={{
         tabBarIcon: ({ focused, color, size }) => (
